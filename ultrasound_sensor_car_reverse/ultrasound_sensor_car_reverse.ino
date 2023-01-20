@@ -1,14 +1,14 @@
 const int TRIG = 3;
 const int ECHO = 2;
 const int BUZZER = 7;
-const int BUZZER_FREQUENCY = 1750;
+const int BUZZER_FREQUENCY = 440;
 const int SERIAL_VEL = 9600;
 const int DISTANCE_FROM_ECHO_FACTOR = 58;
 const int N_LEVELS = 6;
 
 int warning_leds[N_LEVELS] = {8, 9, 10, 11, 12, 13};
 int distance_levels[N_LEVELS] = {10, 20, 30, 40, 50, 60};
-int buzzer_intervals[N_LEVELS] = {300, 250, 200, 150, 100, 0};
+int buzzer_intervals[N_LEVELS] = {300, 300, 250, 200, 150, 100};
 
 void setup() 
 {
@@ -100,7 +100,7 @@ void set_buzzer(int level)
     return;
   }
 
-  interval = buzzer_intervals[level];
+  int interval = buzzer_intervals[level];
   tone(BUZZER,BUZZER_FREQUENCY);
   delay(interval);
   noTone(BUZZER);
